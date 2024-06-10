@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>
@@ -56,6 +57,9 @@ public class PayController {
     @GetMapping(value = "/pay/get/{id}")
     @Operation(summary = "查询", description = "按照id查询流水")
     public ResultData<Pay> getPay(@PathVariable("id") Integer id) {
+        if (Objects.isNull(id) || id < 0) {
+            throw new RuntimeException("不合法的id");
+        }
         return ResultData.success(payService.getById(id));
     }
 
