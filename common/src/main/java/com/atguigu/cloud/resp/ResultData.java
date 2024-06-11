@@ -1,9 +1,7 @@
 package com.atguigu.cloud.resp;
 
-import com.atguigu.cloud.base.ReturnCodeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -11,10 +9,9 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author ShaoHuaYuGong
- * @date 2024/06/04
+ * @date 2024/06/11
  */
 @Data
-@Accessors(chain = true)
 @AllArgsConstructor
 public class ResultData<T> {
 
@@ -33,8 +30,8 @@ public class ResultData<T> {
 
     public static <T> ResultData<T> success(T data) {
         ResultData<T> resultData = new ResultData<>();
-        resultData.setCode(ReturnCodeEnum.RC200.getCode());
-        resultData.setMessage(ReturnCodeEnum.RC200.getMessage());
+        resultData.setCode(RestReturnCodeEnum.RC200.getCode());
+        resultData.setMessage(RestReturnCodeEnum.RC200.getMessage());
         resultData.setData(data);
         return resultData;
     }
@@ -45,13 +42,5 @@ public class ResultData<T> {
         resultData.setMessage(message);
         return resultData;
     }
-
-    public static <T> ResultData<T> fail(ReturnCodeEnum codeEnum) {
-        ResultData<T> resultData = new ResultData<>();
-        resultData.setCode(codeEnum.getCode());
-        resultData.setMessage(codeEnum.getMessage());
-        return resultData;
-    }
-
 
 }
