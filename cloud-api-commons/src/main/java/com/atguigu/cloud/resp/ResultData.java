@@ -2,6 +2,7 @@ package com.atguigu.cloud.resp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * <p>
@@ -12,6 +13,7 @@ import lombok.Data;
  * @date 2024/06/11
  */
 @Data
+@Accessors(chain = true)
 @AllArgsConstructor
 public class ResultData<T> {
 
@@ -30,8 +32,8 @@ public class ResultData<T> {
 
     public static <T> ResultData<T> success(T data) {
         ResultData<T> resultData = new ResultData<>();
-        resultData.setCode(RestReturnCodeEnum.RC200.getCode());
-        resultData.setMessage(RestReturnCodeEnum.RC200.getMessage());
+        resultData.setCode(ReturnCodeEnum.RC200.getCode());
+        resultData.setMessage(ReturnCodeEnum.RC200.getMessage());
         resultData.setData(data);
         return resultData;
     }

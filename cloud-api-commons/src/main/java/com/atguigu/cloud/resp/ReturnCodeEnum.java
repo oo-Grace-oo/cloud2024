@@ -1,4 +1,4 @@
-package com.atguigu.cloud.base;
+package com.atguigu.cloud.resp;
 
 import lombok.Getter;
 

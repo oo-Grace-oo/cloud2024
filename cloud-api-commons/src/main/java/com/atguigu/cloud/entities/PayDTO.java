@@ -1,4 +1,4 @@
-package com.atguigu.cloud.entities.dto;
+package com.atguigu.cloud.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,11 @@ import java.math.BigDecimal;
 
 /**
  * <p>
- *
+ * 一般而言，调用者不应该获悉服务提供者的entity资源并知道表结构关系，所以服务提供方给出的接口文档都都应成为DTO
  * </p>
  *
  * @author ShaoHuaYuGong
- * @date 2024/05/30
+ * @date 2024/06/11
  */
 @Data
 @AllArgsConstructor
