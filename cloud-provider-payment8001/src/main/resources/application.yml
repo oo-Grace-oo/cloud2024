@@ -3,6 +3,13 @@ server:
 
 # ==========applicationName + druid-mysql8 driver===================
 spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        service-name: ${spring.application.name}
   application:
     name: cloud-payment-service
   jackson:
