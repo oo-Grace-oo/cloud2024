@@ -3,6 +3,7 @@ package com.atguigu.cloud.controller;
 import cn.hutool.json.JSONUtil;
 import com.atguigu.cloud.entities.Pay;
 import com.atguigu.cloud.entities.PayDTO;
+import com.atguigu.cloud.mapper.PayMapper;
 import com.atguigu.cloud.resp.ResultData;
 import com.atguigu.cloud.service.PayService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,8 +14,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -79,5 +84,24 @@ public class PayController {
     @GetMapping(value = "/pay/get/info")
     public String getPayInfo(@Value("${atguigu.info}") String info) {
         return "consul config : " + info + "\r\n<br>" + " port:" + port;
+    }
+
+    @Resource(name = "primaryDataSource")
+    private DataSource primaryDataSource;
+
+    @Resource(name = "secondaryDataSource")
+    private DataSource secondaryDataSource;
+    @Resource
+    private PayMapper payMapper;
+
+    @GetMapping(value = "/test")
+    public Object mig() throws SQLException {
+        // 查询相应表的列
+        List<String> columns = payMapper.selectColumns().stream().map(e -> String.valueOf(e.get("Field"))).collect(Collectors.toList());
+        // 根据列名查询数据
+        List<Map<String, Object>> datas = payMapper.selectData(columns);
+        payMapper.replaceIntoData(datas.get(0), columns);
+        payMapper.replaceInto(datas, columns);
+        return primaryDataSource.getConnection().nativeSQL("show COLUMNS from t_pay; ");
     }
 }
