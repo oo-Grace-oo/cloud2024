@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -70,5 +71,13 @@ public class PayController {
     @Operation(summary = "查询全部", description = "查询全部流水")
     public ResultData<List<Pay>> getAll() {
         return ResultData.success(payService.getAll());
+    }
+
+    @Value("${server.port}")
+    private String port;
+
+    @GetMapping(value = "/pay/get/info")
+    public String getPayInfo(@Value("${atguigu.info}") String info) {
+        return "consul config : " + info + "\r\n<br>" + " port:" + port;
     }
 }
