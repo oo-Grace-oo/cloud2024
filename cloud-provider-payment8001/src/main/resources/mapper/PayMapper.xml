@@ -24,30 +24,4 @@
         limit 0 ,200
     </select>
 
-    <insert id="replaceInto">
-        replace into t_pay
-        <foreach collection="col" item="item" separator="," open="(" close=")">
-            ${item}
-        </foreach>
-        values
-        <foreach collection="datas" item="data" separator=",">
-            (
-            <foreach collection="col" item="item" separator=",">
-                ${item}
-            </foreach>
-            )
-        </foreach>
-    </insert>
-
-    <insert id="replaceIntoData">
-        replace into t_pay
-        <foreach collection="col" item="item" separator="," open="(" close=")">
-            ${item}
-        </foreach>
-        values
-        <foreach collection="col" item="colu" separator="," open="(" close=")">
-            ${colu}
-        </foreach>
-    </insert>
-
 </mapper>

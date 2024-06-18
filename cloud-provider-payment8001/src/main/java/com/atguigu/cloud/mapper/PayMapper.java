@@ -12,8 +12,4 @@ public interface PayMapper extends Mapper<Pay> {
     List<Map<String, Object>> selectColumns();
 
     List<Map<String, Object>> selectData(@Param("col") List<String> col);
-
-    Integer replaceInto(List<Map<String, Object>> datas, @Param("col") List<String> col);
-
-    Integer replaceIntoData(Map<String, Object> data, @Param("col") List<String> col);
 }
