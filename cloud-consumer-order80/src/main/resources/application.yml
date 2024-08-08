@@ -7,7 +7,7 @@ spring:
   ####Spring Cloud Consul for Service Discovery
   cloud:
     consul:
-      host: localhost
+      host: shaohuayugong.cn
       port: 8500
       discovery:
         prefer-ip-address: true #优先使用服务ip进行注册

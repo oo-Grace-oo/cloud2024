@@ -7,7 +7,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   cloud:
     consul:
-      host:
+      host: shaohuayugong.cn
       port: 8500
       discovery:
         service-name: ${spring.application.name}
