@@ -17,7 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan("com.atguigu.cloud")
 @EnableDiscoveryClient
 public class Order80 {
-    public static void main(String[] args) {
-        SpringApplication.run(Order80.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Order80.class, args);
+	}
 }
