@@ -9,14 +9,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -67,9 +60,8 @@ public class OrderController {
 		return exchange.getBody();
 	}
 
-	@GetMapping(value = "/pay/get/info")
-	private String getInfoByConsul() {
-		return restTemplate.getForObject(PAYMENT_SRV_URL + "/pay/get/info", String.class);
+	public static void main(String[] args) {
+		System.out.println(String.format("---%s---%s", "111", ""));
 	}
 
 	@Resource
@@ -92,4 +84,8 @@ public class OrderController {
 		return instances.get(0).getServiceId() + ":" + instances.get(0).getPort();
 	}
 
+	@GetMapping(value = "/pay/get/info")
+	private String getInfo() {
+		return restTemplate.getForObject(PAYMENT_SRV_URL + "/pay/get/info", String.class);
+	}
 }

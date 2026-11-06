@@ -11,14 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -38,8 +31,8 @@ public class PayController {
 
 	@Resource
 	private PayService payService;
-	@Value("${server.port}")
-	private String port;
+//	@Value("${server.port}")
+//	private String port;
 
 	@PostMapping(value = "/pay/add")
 	@Operation(summary = "新增", description = "新增支付流水")
@@ -82,8 +75,8 @@ public class PayController {
 		return ResultData.success(payService.getAll());
 	}
 
-	@GetMapping(value = "/pay/get/info")
-	public String getPayInfo(@Value("${atguigu.info}") String info) {
-		return "consul config : " + info + "\r\n" + " port:" + port;
-	}
+//	@GetMapping(value = "/pay/get/info")
+//	public String getPayInfo(@Value("${atguigu.info:info from local application.yml}") String info) {
+//		return "config info : " + info + "\r\n" + " port:" + port;
+//	}
 }

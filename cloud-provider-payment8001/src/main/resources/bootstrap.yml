@@ -5,19 +5,19 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  cloud:
-    consul:
-      host: shaohuayugong.cn
-      port: 8500
-      discovery:
-        service-name: ${spring.application.name}
-        heartbeat:
-          enabled: true
-      config:
-        profile-separator: '-' # default value is ","，we update '-'
-        format: YAML
-        watch:
-          wait-time: 30
+#  cloud:
+#    consul:
+#      host: shaohuayugong.cn
+#      port: 8500
+#      discovery:
+#        service-name: ${spring.application.name}
+#        heartbeat:
+#          enabled: true
+#      config:
+#        profile-separator: '-' # default value is ","，we update '-'
+#        format: YAML
+#        watch:
+#          wait-time: 30
 
 # config/cloud-payment-service/data
 #       /cloud-payment-service-dev/data

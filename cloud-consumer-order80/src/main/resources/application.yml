@@ -4,17 +4,11 @@ server:
 spring:
   application:
     name: cloud-consumer-order
-  ####Spring Cloud Consul for Service Discovery
   cloud:
-    consul:
-      host: shaohuayugong.cn
-      port: 8500
-      discovery:
-        prefer-ip-address: true #优先使用服务ip进行注册
-        service-name: ${spring.application.name}
-        heartbeat:
-          enabled: true
-      service-registry:
-        auto-registration:
-          enabled: true
-
+    discovery:
+      client:
+        simple:
+          instances: # SimpleDiscoveryClient 静态实例列表，配合loadbalancer实现服务名调用+负载均衡
+            cloud-payment-service:
+              - uri: http://localhost:8001
+              - uri: http://localhost:8002
